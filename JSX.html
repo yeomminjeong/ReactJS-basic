@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <!-- JSX를 사용하면 ReactJS로 변환을 시켜줘야 함. -> Using Babel -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+    const root = document.getElementById("root");
+    //React.createElement("htmlTag","property","contents")
+    function Title() {
+      return (
+        <h3
+          id="title"
+          onMouseEnter={() => {
+            console.log("mouse enter");
+          }}
+        >
+          Hello I'm a title.
+        </h3>
+      );
+    }
+    const Button = () => (
+      <button
+        onClick={() => console.log("i'm clicked")}
+        style={{ backgroundColor: "#ffdbf5" }}
+      >
+        Click me!
+      </button>
+    );
+
+    const Contaniner = () => (
+      <div>
+        <Title />
+        <Button />
+      </div>
+    );
+
+    ReactDOM.render(<Contaniner />, root);
+    // 컴포넌트(Button, Title, Container)들은 반드시 대문자 (Upper case)로!
+    // 소문자로 할 경우 html tag로 인식함.
+  </script>
+</html>

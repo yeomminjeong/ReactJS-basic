@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+    const root = document.getElementById("root");
+
+    function App() {
+      const data = React.useState(0);
+      const [counter, setCounter] = React.useState(0); //(+)
+      // const [counter, setCounter] = data;
+      // console.log(data);
+      const onClick = () => {
+        // setCounter(counter + 1); //1.값 전달
+        setCounter((current) => current + 1); //2.함수 전달, 무조건 현재 값을 받음
+      };
+      return (
+        <div>
+          <h3>Total clicks: {counter} </h3>
+          <button onClick={onClick}>Click me!</button>
+        </div>
+      );
+    }
+    ReactDOM.render(<App />, root);
+  </script>
+</html>
+
+<!--
+  1. STATE
+  - React.useState(default value, function) f: 초기값을 바꾸는 함수(modifier function)
+  - state의 modifier 함수에 의해 component가 rerendering 되고 새로운 값을 가지고 코드가 다시 실행된다.
+  - state가 바뀌면 rerendering이 일어난다. -->
+<!-- 
+  (+) 배열에 변수 이름 간단하게 적용하는 법
+  const x = [1,2,3]
+  const [a,b,c] = x; -->
